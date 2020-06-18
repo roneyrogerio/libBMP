@@ -6,13 +6,14 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 01:01:59 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/18 01:02:26 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/18 02:22:32 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lbmp_int.h"
 
-void	lbmp_destroy(t_lbmp *lbmp)
+int	lbmp_destroy(t_lbmp *lbmp)
 {
 	free(lbmp);
+	return (1);
 }

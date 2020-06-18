@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:08:48 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/18 00:56:26 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/18 04:02:03 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int		main(void)
 		printf("error");
 	else
 	{
-		printf("%u\n", lbmp_get_fheader_size(lbmp));
-		printf("%u\n", lbmp_get_fheader_reserved1(lbmp));
-		printf("%u\n", lbmp_get_fheader_reserved2(lbmp));
-		printf("%u\n", lbmp_get_fheader_offset(lbmp));
+		printf("image size : %u\n", lbmp_get_size(lbmp));
+		printf("width      : %u\n", lbmp_get_width(lbmp));
+		printf("height     : %u\n", lbmp_get_height(lbmp));
+		printf("bpp        : %u\n", lbmp_get_bpp(lbmp));
 	}
 	lbmp_destroy(lbmp);
 }
