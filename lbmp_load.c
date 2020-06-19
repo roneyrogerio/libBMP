@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 20:29:17 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 20:31:32 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_lbmp	*lbmp_load(char *pathname)
 		return (NULL);
 	if (lbmp_int_load_iheader(&lbmp->iheader, fd) && lbmp_destroy(lbmp))
 		return (NULL);
-	printf("aqui");
 	if (lbmp->iheader.compression != 0)
 		return (NULL);
 	if (lbmp_int_offset(fd, lbmp->fheader.offset - 54) && lbmp_destroy(lbmp))
