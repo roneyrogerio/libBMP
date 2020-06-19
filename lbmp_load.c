@@ -6,12 +6,11 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 19:25:09 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 20:29:17 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lbmp_int.h"
-#include <stdio.h>
 
 t_lbmp	*lbmp_load(char *pathname)
 {
@@ -30,7 +29,6 @@ t_lbmp	*lbmp_load(char *pathname)
 	printf("aqui");
 	if (lbmp->iheader.compression != 0)
 		return (NULL);
-	printf("aqui");
 	if (lbmp_int_offset(fd, lbmp->fheader.offset - 54) && lbmp_destroy(lbmp))
 		return (NULL);
 	if (lbmp_int_load_pixels(fd, lbmp) && lbmp_destroy(lbmp))
