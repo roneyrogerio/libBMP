@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 23:17:14 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 22:05:45 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/20 01:10:44 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ int				lbmp_int_load_fheader(t_lbmp_file_header *fheader, int fd);
 int				lbmp_int_load_iheader(t_lbmp_info_header *iheader, int fd);
 int				lbmp_int_load_pixels(int fd, t_lbmp *lbmp);
 int				lbmp_int_offset(int fd, int offset);
+void			lbmp_int_bzero(t_lbmp *lbmp);
 #endif
