@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 20:31:32 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 22:07:25 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,44 +37,44 @@ t_lbmp	*lbmp_load(char *pathname)
 
 int		lbmp_int_load_fheader(t_lbmp_file_header *fheader, int fd)
 {
-	if (lbmp_int_read_16(fd, &fheader->type, 1))
+	if (lbmp_int_read_16(fd, &fheader->type))
 		return (-1);
-	if (fheader->type != 0x424d)
+	if (fheader->type != 0x4d42)
 		return (-1);
-	if (lbmp_int_read_32(fd, &fheader->size, 0))
+	if (lbmp_int_read_32(fd, &fheader->size))
 		return (-1);
-	if (lbmp_int_read_16(fd, &fheader->reserved1, 0))
+	if (lbmp_int_read_16(fd, &fheader->reserved1))
 		return (-1);
-	if (lbmp_int_read_16(fd, &fheader->reserved2, 0))
+	if (lbmp_int_read_16(fd, &fheader->reserved2))
 		return (-1);
-	if (lbmp_int_read_32(fd, &fheader->offset, 0))
+	if (lbmp_int_read_32(fd, &fheader->offset))
 		return (-1);
 	return (0);
 }
 
 int		lbmp_int_load_iheader(t_lbmp_info_header *iheader, int fd)
 {
-	if (lbmp_int_read_32(fd, &iheader->info_size, 0))
+	if (lbmp_int_read_32(fd, &iheader->info_size))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->width, 0))
+	if (lbmp_int_read_32(fd, &iheader->width))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->height, 0))
+	if (lbmp_int_read_32(fd, &iheader->height))
 		return (-1);
-	if (lbmp_int_read_16(fd, &iheader->planes, 0))
+	if (lbmp_int_read_16(fd, &iheader->planes))
 		return (-1);
-	if (lbmp_int_read_16(fd, &iheader->bpp, 0))
+	if (lbmp_int_read_16(fd, &iheader->bpp))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->compression, 0))
+	if (lbmp_int_read_32(fd, &iheader->compression))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->img_size, 0))
+	if (lbmp_int_read_32(fd, &iheader->img_size))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->x_pels_per_meter, 0))
+	if (lbmp_int_read_32(fd, &iheader->x_pels_per_meter))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->y_pels_per_meter, 0))
+	if (lbmp_int_read_32(fd, &iheader->y_pels_per_meter))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->clr_used, 0))
+	if (lbmp_int_read_32(fd, &iheader->clr_used))
 		return (-1);
-	if (lbmp_int_read_32(fd, &iheader->clr_important, 0))
+	if (lbmp_int_read_32(fd, &iheader->clr_important))
 		return (-1);
 	return (0);
 }
