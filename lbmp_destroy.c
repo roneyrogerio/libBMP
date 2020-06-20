@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 01:01:59 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/18 02:22:32 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 22:14:38 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	lbmp_destroy(t_lbmp *lbmp)
 {
+	free(lbmp->data);
 	free(lbmp);
 	return (1);
 }
