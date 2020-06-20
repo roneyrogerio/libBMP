@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:08:48 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 19:22:30 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 23:17:58 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,15 @@ int		main(void)
 		height = lbmp_get_height(lbmp);
 		win = mlx_new_window(mlx, width, height, "BMP File");
 		bpp = lbmp_get_bpp(lbmp);
-		
+	
+		y = 75;
+		x = 0;
+		while (x < width)
+		{
+			pxl_ptr = lbmp_get_pixel_ptr(x, y, lbmp);
+			lbmp_set_pixel_color(pxl_ptr, 0xFF0000, bpp);
+			x++;
+		}
 		y = 0;
 		while (y < height)
 		{

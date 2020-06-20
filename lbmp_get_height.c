@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 21:46:15 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 21:46:51 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 23:48:41 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 uint32_t	lbmp_get_height(t_lbmp *lbmp)
 {
+	if (lbmp == NULL)
+		return (0);
 	return (lbmp->iheader.height);
 }

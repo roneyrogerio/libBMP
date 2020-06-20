@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 21:44:00 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 21:45:46 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/20 00:05:12 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 uint32_t	lbmp_get_size(t_lbmp *lbmp)
 {
+	if (lbmp == NULL)
+		return (0);
 	return (lbmp->fheader.size);
 }

@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 01:09:20 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 01:58:02 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/20 00:04:05 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	lbmp_int_offset(int fd, int offset)
 {
 	char	*buffer;
 
-	if (!offset)
+	if (fd < 1 || offset == 0)
 		return (0);
 	buffer = (char *)malloc(offset * sizeof(char));
 	if (!buffer || read(fd, buffer, offset) < offset)

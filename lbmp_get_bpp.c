@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 21:56:57 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 21:57:01 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/20 00:09:56 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 uint32_t	lbmp_get_bpp(t_lbmp *lbmp)
 {
+	if (lbmp == NULL)
+		return (0);
 	return (lbmp->iheader.bpp);
 }

@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 22:07:25 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/19 23:48:07 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int		lbmp_int_load_pixels(int fd, t_lbmp *lbmp)
 	int		size;
 	void	*buffer;
 
+	if (fd < 1 || lbmp == NULL)
+		return (-1);
 	size = lbmp->fheader.size - lbmp->fheader.offset;
 	buffer = malloc(size);
 	if (!buffer || read(fd, buffer, size) < size)
