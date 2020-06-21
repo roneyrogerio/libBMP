@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 22:38:20 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 23:59:06 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/21 06:03:15 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@
 **I can use memcpy!
 */
 
-int	lbmp_set_pixel_color(void *ptr, uint32_t new, int bpp)
+int	lbmp_set_pixel_color(t_lbmp *lbmp, int x, int y, uint32_t color)
 {
-	void	*new_ptr;
+	unsigned char	*pixel_ptr;
+	unsigned char	*color_ptr;
+	int				bypp;
 
-	if (ptr == NULL)
+	if (lbmp == NULL)
 		return (-1);
-	bpp /= 8;
-	new_ptr = &new;
-	while (bpp--)
-		*(unsigned char *)ptr++ = *(unsigned char *)new_ptr++;
+	bypp = lbmp->iheader.bpp / 8;
+	pixel_ptr = (unsigned char *)lbmp_int_get_pixel_ptr(lbmp, x, y);
+	color_ptr = (unsigned char *)&color;
+	while (bypp--)
+		*pixel_ptr++ = *color_ptr++;
 	return (0);
 }

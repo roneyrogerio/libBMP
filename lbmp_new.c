@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 00:37:06 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/20 01:53:58 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/21 06:06:46 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*lbmp_new(int width, int height, int bpp)
 	t_lbmp	*lbmp;
 	int		data_size;
 
+	if (lbmp_int_check_bpp(bpp))
+		return (lbmp_int_set_err(LBMP_BPPERR));
 	lbmp = (t_lbmp *)malloc(sizeof(t_lbmp));
 	if (lbmp == NULL)
 		return (NULL);
@@ -31,7 +33,6 @@ void	*lbmp_new(int width, int height, int bpp)
 	lbmp->fheader.type = 0x4d42;
 	lbmp->fheader.size = 54 + data_size;
 	lbmp->fheader.offset = 54;
-	lbmp->data = malloc(data_size);
 	lbmp->iheader.info_size = 40;
 	lbmp->iheader.width = width;
 	lbmp->iheader.height = height;

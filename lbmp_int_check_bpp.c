@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lbmp_get_pixel_color.c                             :+:      :+:    :+:   */
+/*   lbmp_int_check_bpp.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/19 02:05:22 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 05:51:53 by rde-oliv         ###   ########.fr       */
+/*   Created: 2020/06/21 05:13:11 by rde-oliv          #+#    #+#             */
+/*   Updated: 2020/06/21 05:14:58 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lbmp_int.h"
-
-int	lbmp_get_pixel_color(t_lbmp *lbmp, int x, int y)
+int	lbmp_int_check_bpp(int bpp)
 {
-	int			bpp;
-	uint32_t	n;
-
-	if (lbmp == NULL)
-		return (0);
-	n = *(uint32_t *)lbmp_int_get_pixel_ptr(lbmp, x, y);
-	bpp = lbmp->iheader.bpp;
-	if (bpp == 32)
-		return (n);
-	return (n & ~(~0 << bpp));
+	if (bpp != 8 && bpp != 16 && bpp != 24 && bpp != 32)
+		return (-1);
+	return (0);
 }

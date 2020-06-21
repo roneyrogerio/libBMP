@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 01:30:57 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 04:39:10 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/21 06:09:10 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ const char	*lbmp_strerror(int code)
 	if (code == LBMP_BPPERR)
 		return ("ERROR: Only bpp 8, 16, 24 and 32 are impremented.\n");
 	if (code == LBMP_FHEADERR)
-		return ("ERROR: Error while read file header.");
+		return ("ERROR: Error while reading file header.\n");
 	if (code == LBMP_IHEADERR)
-		return ("ERROR: Error while read info header.");
+		return ("ERROR: Error while reading info header.\n");
 	if (code == LBMP_MEMERR)
-		return ("ERROR: Cannot allocate memory.");
+		return ("ERROR: Cannot allocate memory.\n");
 	if (code == LBMP_OPERR)
-		return ("ERROR: Cannot open file.");
+		return ("ERROR: Cannot open file.\n");
 	if (code == LBMP_COMPERR)
-		return ("ERROR: Compressed bmp not implemented.");
+		return ("ERROR: Compressed bmp not implemented.\n");
 	if (code == LBMP_PXLERR)
-		return ("ERROR: Error while read pixel array.");
+		return ("ERROR: Error while reading pixel array.\n");
 	return (NULL);
 }
