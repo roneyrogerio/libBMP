@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 23:17:14 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 05:40:21 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/21 21:44:54 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int				lbmp_int_offset(int fd, int offset);
 void			lbmp_int_bzero(t_lbmp *lbmp);
 void			*lbmp_int_get_pixel_ptr(t_lbmp *lbmp, int x, int y);
 void			*lbmp_int_set_err(int code);
-int				lbmp_int_check_bpp(int bpp);
 
 # define LBMP_BPPERR 1
 # define LBMP_FHEADERR 2

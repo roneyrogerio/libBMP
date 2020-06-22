@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 05:21:07 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/21 21:17:45 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_lbmp	*lbmp_load(char *pathname)
 		return (lbmp_int_set_err(LBMP_FHEADERR));
 	if (lbmp_int_load_iheader(&lbmp->iheader, fd) && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_IHEADERR));
-	if (lbmp_int_check_bpp(lbmp->iheader.bpp))
+	if (lbmp->iheader.bpp != 24 && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_BPPERR));
-	if (lbmp->iheader.compression != 0)
+	if (lbmp->iheader.compression != 0 && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_COMPERR));
 	if (lbmp_int_offset(fd, lbmp->fheader.offset - 54) && lbmp_destroy(lbmp))
 		return (NULL);
