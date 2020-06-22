@@ -6,60 +6,38 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:08:48 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/19 23:17:58 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/22 01:54:05 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lbmp.h"
-#include <stdio.h>
-#include <mlx.h>
+#include <unistd.h>
 
 int		main(void)
 {
 	void		*lbmp;
-	int			width;
-	int			height;
-	int			bpp;
-	uint32_t	pxl;
-	void		*pxl_ptr;
 	int			x;
 	int			y;
-	void		*mlx;
-	void		*win;
 
 	lbmp = lbmp_load("file.bmp");
 	if (lbmp == NULL)
-		printf("error\n");
+		write(2, "error\n", 6);
 	else
 	{
-		mlx = mlx_init();
-		width = lbmp_get_width(lbmp);
-		height = lbmp_get_height(lbmp);
-		win = mlx_new_window(mlx, width, height, "BMP File");
-		bpp = lbmp_get_bpp(lbmp);
-	
 		y = 75;
 		x = 0;
-		while (x < width)
+		while (y < 100)
 		{
-			pxl_ptr = lbmp_get_pixel_ptr(x, y, lbmp);
-			lbmp_set_pixel_color(pxl_ptr, 0xFF0000, bpp);
+			lbmp_set_pixel_color(lbmp, x, y, 0xFF0000);
 			x++;
-		}
-		y = 0;
-		while (y < height)
-		{
-			x = 0;
-			while (x < width)
+			if (x == 500)
 			{
-				pxl_ptr = lbmp_get_pixel_ptr(x, y, lbmp);
-				pxl = lbmp_get_pixel_color(pxl_ptr, bpp);
-				mlx_pixel_put (mlx, win, x, y, pxl);
-				x++;
+				x = 0;
+				y++;
 			}
-			y++;
 		}
-		mlx_loop(mlx);
+		lbmp_save("altered-file.bmp", lbmp);
+		write(1, "The altered image is saved as altered-file.bmp\n", 47);
 	}
 	lbmp_destroy(lbmp);
 }

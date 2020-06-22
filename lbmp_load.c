@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 21:17:45 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/22 01:36:08 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lbmp	*lbmp_load(char *pathname)
 	int		fd;
 	t_lbmp	*lbmp;
 
-	lbmp = (t_lbmp *)malloc(sizeof(t_lbmp));
+	lbmp = (t_lbmp *)calloc(1, sizeof(t_lbmp));
 	if (lbmp == NULL)
 		return (lbmp_int_set_err(LBMP_MEMERR));
 	if ((fd = open(pathname, O_RDONLY)) == -1 && lbmp_destroy(lbmp))
@@ -34,6 +34,10 @@ t_lbmp	*lbmp_load(char *pathname)
 		return (NULL);
 	if (lbmp_int_load_pixels(fd, lbmp) && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_PXLERR));
+	lbmp->fheader.size = (lbmp->iheader.width * lbmp->iheader.height * 3) + 54;
+	lbmp->fheader.offset = 54;
+	lbmp->iheader.info_size = 40;
+	close(fd);
 	return (lbmp);
 }
 

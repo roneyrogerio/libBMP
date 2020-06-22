@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 22:38:20 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 21:33:56 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/22 01:56:06 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	lbmp_set_pixel_color(t_lbmp *lbmp, int x, int y, uint32_t color)
 {
-	int 			bypp;
+	int				bypp;
 	unsigned char	*pixel_ptr;
 	unsigned char	*color_ptr;
 
