@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 23:55:23 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/21 21:11:44 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/22 02:42:11 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,15 @@ int			lbmp_set_pixel_color(void *lbmp, int x, int y, uint32_t color);
 void		*lbmp_new(int width, int height, int bpp);
 int			lbmp_save(char *path, void *lbmp);
 const char	*lbmp_strerror(int code);
+
+# define LBMP_BPPERR 1
+# define LBMP_FHEADERR 2
+# define LBMP_IHEADERR 3
+# define LBMP_MEMERR 4
+# define LBMP_OPERR 5
+# define LBMP_COMPERR 6
+# define LBMP_PXLERR 7
+# define LBMP_NULLERR 8
+# define LBMP_WFHERR 9
+# define LBMP_WIHERR 10
 #endif
