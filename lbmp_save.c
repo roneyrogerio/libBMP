@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 02:18:02 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/22 01:54:57 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/06/24 18:49:30 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	lbmp_save(char *path, t_lbmp *lbmp)
 
 	if (lbmp == NULL && lbmp_int_set_err(LBMP_NULLERR))
 		return (-1);
-	fd = open(path, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 755);
+	fd = open(path, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd < 3 && lbmp_int_set_err(LBMP_OPERR))
 		return (-1);
 	if (lbmp_int_save_fheader(fd, &lbmp->fheader) &&
