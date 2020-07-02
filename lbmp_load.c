@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 04:03:04 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/22 01:36:08 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/07/02 06:03:12 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_lbmp	*lbmp_load(char *pathname)
 	int		fd;
 	t_lbmp	*lbmp;
 
-	lbmp = (t_lbmp *)calloc(1, sizeof(t_lbmp));
-	if (lbmp == NULL)
+	if ((lbmp = (t_lbmp *)calloc(1, sizeof(t_lbmp))) == NULL)
 		return (lbmp_int_set_err(LBMP_MEMERR));
 	if ((fd = open(pathname, O_RDONLY)) == -1 && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_OPERR));
@@ -26,7 +25,8 @@ t_lbmp	*lbmp_load(char *pathname)
 		return (lbmp_int_set_err(LBMP_FHEADERR));
 	if (lbmp_int_load_iheader(&lbmp->iheader, fd) && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_IHEADERR));
-	if (lbmp->iheader.bpp != 24 && lbmp_destroy(lbmp))
+	if (lbmp->iheader.bpp != 24 && lbmp->iheader.bpp != 32
+			&& lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_BPPERR));
 	if (lbmp->iheader.compression != 0 && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_COMPERR));

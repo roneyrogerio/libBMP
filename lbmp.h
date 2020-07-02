@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 23:55:23 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/24 06:58:52 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/07/02 06:24:52 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int			lbmp_destroy(void *lbmp);
 uint32_t	lbmp_get_size(void *lbmp);
 uint32_t	lbmp_get_width(void *lbmp);
 uint32_t	lbmp_get_height(void *lbmp);
-int			lbmp_get_pixel_color(void *lbmp, int x, int y);
+uint32_t	lbmp_get_pixel_color(void *lbmp, int x, int y);
 int			lbmp_set_pixel_color(void *lbmp, int x, int y, uint32_t color);
-void		*lbmp_new(int width, int height);
+void		*lbmp_new(int width, int height, int bpp);
 int			lbmp_save(char *path, void *lbmp);
 const char	*lbmp_strerror(int code);
 

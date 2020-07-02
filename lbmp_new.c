@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 00:37:06 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/22 01:01:08 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/07/02 06:16:35 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 ** i can use calloc! **
 */
 
-void	*lbmp_new(int width, int height)
+void	*lbmp_new(int width, int height, int bpp)
 {
 	t_lbmp	*lbmp;
 	int		data_size;
 
+	if (bpp != 24 && bpp != 32)
+		return (lbmp_int_set_err(LBMP_BPPERR));
 	lbmp = (t_lbmp *)malloc(sizeof(t_lbmp));
 	if (lbmp == NULL)
 		return (lbmp_int_set_err(LBMP_MEMERR));
-	data_size = width * height * 3;
+	data_size = width * height * (bpp / 8);
 	if ((lbmp->data = malloc(data_size)) == NULL && lbmp_destroy(lbmp))
 		return (lbmp_int_set_err(LBMP_MEMERR));
 	lbmp_int_bzero(lbmp);
@@ -34,7 +36,7 @@ void	*lbmp_new(int width, int height)
 	lbmp->iheader.info_size = 40;
 	lbmp->iheader.width = width;
 	lbmp->iheader.height = height;
-	lbmp->iheader.bpp = 24;
+	lbmp->iheader.bpp = bpp;
 	lbmp->iheader.img_size = data_size;
 	return (lbmp);
 }
