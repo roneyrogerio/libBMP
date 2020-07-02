@@ -1,7 +1,7 @@
 
 **This is not a library for use in production, its purpose is entirely didactic!**
 
-Works only with 24bpp bmp images and little endian machines
+Works only with 24bpp and 32bpp bmp images and little endian machines
 
 The test can be done with the following command:
 ```sh
