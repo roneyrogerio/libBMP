@@ -6,7 +6,7 @@
 /*   By: rde-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 02:18:02 by rde-oliv          #+#    #+#             */
-/*   Updated: 2020/06/24 18:49:30 by rde-oliv         ###   ########.fr       */
+/*   Updated: 2020/07/02 06:38:41 by rde-oliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	lbmp_save(char *path, t_lbmp *lbmp)
 {
 	int fd;
 	int data_size;
+	int bpp;
 
 	if (lbmp == NULL && lbmp_int_set_err(LBMP_NULLERR))
 		return (-1);
+	bpp = lbmp->iheader.bpp;
 	fd = open(path, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd < 3 && lbmp_int_set_err(LBMP_OPERR))
 		return (-1);
@@ -28,7 +30,7 @@ int	lbmp_save(char *path, t_lbmp *lbmp)
 	if (lbmp_int_save_iheader(fd, &lbmp->iheader) &&
 			lbmp_int_set_err(LBMP_WIHERR))
 		return (-1);
-	data_size = lbmp->iheader.width * lbmp->iheader.height * 3;
+	data_size = lbmp->iheader.width * lbmp->iheader.height * (bpp / 8);
 	if (write(fd, lbmp->data, data_size) < data_size)
 		return (-1);
 	close(fd);
